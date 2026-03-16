@@ -13,14 +13,14 @@ services:
       test: ["CMD-SHELL", "pg_isready -U mmuser -d mattermost"]
       interval: 10s
       timeout: 5s
-      retries: 10
+      retries: 12
+      start_period: 40s
 
   mattermost:
     image: mattermost/mattermost-team-edition:${MATTERMOST_IMAGE_TAG:-10.11.8}
     restart: unless-stopped
     depends_on:
-      postgres:
-        condition: service_healthy
+      - postgres
     environment:
       TZ: ${TZ:-Europe/Samara}
       MM_SQLSETTINGS_DRIVERNAME: postgres
