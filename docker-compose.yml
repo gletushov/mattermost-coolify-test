@@ -21,6 +21,9 @@ services:
     restart: unless-stopped
     depends_on:
       - postgres
+    ports:
+      - "8443:8443/tcp"
+      - "8443:8443/udp"
     environment:
       TZ: Europe/Samara
       MM_SQLSETTINGS_DRIVERNAME: postgres
