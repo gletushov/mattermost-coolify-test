@@ -5,8 +5,8 @@ services:
     environment:
       POSTGRES_DB: mattermost
       POSTGRES_USER: mmuser
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      TZ: ${TZ:-Europe/Samara}
+      POSTGRES_PASSWORD: MmTestPass2026x
+      TZ: Europe/Samara
     volumes:
       - mattermost_postgres:/var/lib/postgresql
     healthcheck:
@@ -22,11 +22,11 @@ services:
     depends_on:
       - postgres
     environment:
-      TZ: ${TZ:-Europe/Samara}
+      TZ: Europe/Samara
       MM_SQLSETTINGS_DRIVERNAME: postgres
-      MM_SQLSETTINGS_DATASOURCE: postgres://mmuser:${POSTGRES_PASSWORD}@postgres:5432/mattermost?sslmode=disable&connect_timeout=10
-      MM_SERVICESETTINGS_SITEURL: ${MM_SERVICESETTINGS_SITEURL}
-      MM_TEAMSETTINGS_SITENAME: ${MM_TEAMSETTINGS_SITENAME:-Clinic Platform Chat}
+      MM_SQLSETTINGS_DATASOURCE: postgres://mmuser:MmTestPass2026x@postgres:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_SERVICESETTINGS_SITEURL: https://chat.clinicplatform.ru
+      MM_TEAMSETTINGS_SITENAME: Clinic Platform Chat
       MM_LOGSETTINGS_ENABLECONSOLE: "true"
       MM_PLUGINSETTINGS_ENABLEMARKETPLACE: "true"
     volumes:
